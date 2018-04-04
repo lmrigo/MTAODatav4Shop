@@ -1,0 +1,38 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "routes": [
+    {
+      "path": "/odata/v4",
+      "target": {
+        "type": "destination",
+        "name": "destination-placeholder",
+        "entryPath": "/odata/v4"
+      },
+      "description": "Dummy destination to be mapped to a real destination when running the application (hc_destmapping URL parameter)"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.52.8"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.52.8"
+      },
+      "description": "SAPUI5 Test Resources"
+    }
+  ],
+  "sendWelcomeFileRedirect": true,
+  "headerWhiteList": [
+  	"Authorization"
+  ]
+}

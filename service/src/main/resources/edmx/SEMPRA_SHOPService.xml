@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+	<Schema Namespace="SEPMRA_SHOP" xml:lang="en" sap:schema-version="1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+		<EntityType Name="Product" sap:service-version="1" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Id"/>
+				</Key>
+				<Property Name="AverageRating" Type="Edm.Decimal" Nullable="false" Precision="4" Scale="2" sap:label="Average Rating" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Name" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="StockQuantity" Type="Edm.Int32" Nullable="false" sap:unit="QuantityUnit" sap:label="Availability" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+				<Property Name="DimensionDepth" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="QuantityUnit" sap:label="Length" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="DimensionHeight" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="QuantityUnit" sap:label="Height" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="DimensionUnit" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="DimensionWidth" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="QuantityUnit" sap:label="Width" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="HasReviewOfCurrentUser" Type="Edm.Boolean" Nullable="true" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Product ID" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="ImageUrl" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Image" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:semantics="url"/>
+				<Property Name="IsFavoriteOfCurrentUser" Type="Edm.Boolean" Nullable="true" sap:label="Is Favorite" sap:creatable="false" sap:sortable="false"/>
+				<Property Name="LastModified" Type="Edm.String" Nullable="true" Precision="24" sap:label="Changed At" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="MainCategoryId" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Main Category" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="MainCategoryName" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Main Category" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="MeasureUnit" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="2" sap:unit="CurrencyCode" sap:label="Price" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="QuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unit of Measure" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="RatingCount" Type="Edm.Int32" Nullable="true" sap:label="Number of Reviews" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="SubCategoryId" Type="Edm.String" Nullable="true" MaxLength="40" sap:label="Category" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="SubCategoryName" Type="Edm.String" Nullable="true" MaxLength="40" sap:label="Category" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="SupplierId" Type="Edm.String" Nullable="true" MaxLength="10" sap:label="Business Partner ID" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="SupplierName" Type="Edm.String" Nullable="true" MaxLength="80" sap:label="Supplier Name" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="WeightMeasure" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="QuantityUnit" sap:label="Weight" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="WeightUnit" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:semantics="unit-of-measure"/>
+			</EntityType>
+			<EntityContainer Name="EntityContainer"
+				p4:LazyLoadingEnabled="true" xmlns:p4="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+				m:IsDefaultEntityContainer="true" sap:supported-formats="atom json">
+				<EntitySet Name="Products" EntityType="SEPMRA_SHOP.Product" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1" />
+		</EntityContainer>
+	</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

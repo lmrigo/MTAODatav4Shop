@@ -1,0 +1,12 @@
+---
+applications:
+
+- name: service
+  memory: 512M
+  host: service_random
+  path: target/service.war
+  buildpack: sap_java_buildpack
+  #env:
+  #  destinations: '[{name: "ErpQueryEndpoint", url: "https://sapes4.sapdevcenter.com", username: "", password: ""}]'
+  services:
+    - hdi

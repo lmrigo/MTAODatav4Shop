@@ -1,0 +1,51 @@
+ID: MTAO4Shop
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: sample.Shop
+   type: html5
+   path: sample.Shop
+   parameters:
+      disk-quota: 256M
+      memory: 256M
+   build-parameters:
+      builder: grunt
+   requires:
+    - name: service_api
+      group: destinations
+      properties:
+         forwardAuthToken: true
+         strictSSL: false
+         name: service_api
+         url: ~{url}
+
+ - name: hdb
+   type: hdb
+   path: hdb
+   requires:
+    - name: hdi_hdb
+
+ - name: service
+   type: java
+   path: service
+   parameters:
+      memory: 512M
+   provides:
+    - name: service_api
+      properties:
+         url: ${default-url}
+   requires:
+    - name: hdi_hdb
+      properties:
+         JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
+            {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
+
+resources:
+ - name: hdi_hdb
+   parameters:
+      config:
+         schema: SEMPRA_SHOP
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container

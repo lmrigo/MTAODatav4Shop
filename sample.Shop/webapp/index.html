@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8">
+
+        <title>Shop</title>
+
+        <script id="sap-ui-bootstrap"
+            src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-resourceroots='{"nw.epm.refapps.shop": ""}'>
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="css/shopStyles.css">
+
+        <script>
+            sap.ui.getCore().attachInit(function() {
+                sap.ui.require([
+                "nw/epm/refapps/shop/localService/mockserver"
+            ], function (server) {
+                // set up test service for local testing
+                //server.init();
+                // initialize the ushell sandbox component
+                new sap.m.Shell({
+                    app: new sap.ui.core.ComponentContainer({
+                        height : "100%",
+                        name : "nw.epm.refapps.shop"
+                    })
+                }).placeAt("content");
+            });
+            });
+        </script>
+    </head>
+
+    <body class="sapUiBody" id="content">
+    </body>
+
+</html>

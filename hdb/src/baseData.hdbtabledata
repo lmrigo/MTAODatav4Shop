@@ -1,0 +1,23 @@
+{ 
+  "format_version": 1, 
+  "imports": 
+  [ { 
+		"target_table": "SEPMRA_SHOP.Products", 
+		"source_data" : { "data_type" : "CSV", "file_name" : "products.csv", "has_header" : true }, 
+		"import_settings" : { "import_columns" : [ "Id","MainCategoryId","MainCategoryName","WeightMeasure","WeightUnit","Description","Name","ImageUrl","Price","DimensionWidth","DimensionDepth","DimensionHeight","DimensionUnit","CurrencyCode","QuantityUnit","MeasureUnit","AverageRating","StockQuantity" ] }, 
+		"column_mappings" : { "Id": "product_id", "MainCategoryId": "category_id", "MainCategoryName": "category_id", "WeightMeasure": "weight_measure", "WeightUnit": "weight_unit", "Description": "description", "Name": "name", "ImageUrl": "web_adress", "Price": "price", "DimensionWidth": "dimensions_width", "DimensionDepth": "dimensions_depth", "DimensionHeight": "dimensions_height", "DimensionUnit": "dimensions_unit", "CurrencyCode": "currency_code", "QuantityUnit": "measure_unit","MeasureUnit": "measure_unit","AverageRating":"avg_rating", "StockQuantity":"stock_qty"} 
+	},
+	{ 
+		"target_table": "SEPMRA_SHOP.MainCategories", 
+		"source_data" : { "data_type" : "CSV", "file_name" : "main_categories.csv", "has_header" : true }, 
+		"import_settings" : { "import_columns" : [ "Id","Name"] }, 
+		"column_mappings" : { "Id":"main_category","Name":"main_category"} 
+	},
+	{ 
+		"target_table": "SEPMRA_SHOP.SubCategories", 
+		"source_data" : { "data_type" : "CSV", "file_name" : "sub_categories.csv", "has_header" : true }, 
+		"import_settings" : { "import_columns" : [ "Id","Name","MainCategoryId","MainCategoryName"] }, 
+		"column_mappings" : { "Id":"sub_category","Name":"sub_category","MainCategoryId":"main_category","MainCategoryName":"main_category"} 
+	}
+  ] 
+}

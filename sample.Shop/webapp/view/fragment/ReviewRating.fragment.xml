@@ -1,0 +1,11 @@
+<core:FragmentDefinition id="reviewRatingFragment" xmlns:reuse="nw.epm.refapps.shop.reuse.control"
+                         xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	<Popover id="reviewRatingPopover" showHeader="false" placement="Auto">
+		<content>
+			<l:VerticalLayout content="{path: 'ReviewAggregates', sorter: {path: 'Rating', descending: true}}" id="reviewRatingList">
+				<reuse:RatingAndCount enabled="false" iconSize="1rem" id="ratingAndCountControl" maxRatingValue="5" ratingCount="{RatingCount}"
+					value="{Rating}" verticalAlignContent="true"/>
+			</l:VerticalLayout>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

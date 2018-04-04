@@ -1,0 +1,20 @@
+{
+  "welcomeFile": "/sample.Shop/index.html",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "/odata/v4",
+      "authenticationType": "none",
+      "destination": "service_api",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sample.Shop/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    }
+  ]
+}

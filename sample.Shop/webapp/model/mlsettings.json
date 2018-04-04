@@ -1,0 +1,8 @@
+{
+	"name": "Image Classifier",
+	"url": "https://sandbox.api.sap.com/ml/imageclassifier/inference_sync",
+	"headers": {
+		"Accept": "application/json",
+		"APIKey": "ta0afXGvInTgTHtjQqclBQqbUZQYQ7Qw"
+	}
+}

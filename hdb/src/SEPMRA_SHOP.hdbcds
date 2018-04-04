@@ -1,0 +1,43 @@
+context SEPMRA_SHOP {
+entity Products {
+ key Id : String(10);
+ AverageRating : Decimal(4,2);
+ CurrencyCode : String(3);
+ Description : String(255);
+ DimensionDepth : Decimal(13,3);
+ DimensionHeight : Decimal(13,3);
+ DimensionUnit : String(10);
+ DimensionWidth : Decimal(13,3);
+ HasReviewOfCurrentUser : Boolean;
+ ImageUrl : String(255);
+ IsFavoriteOfCurrentUser : Boolean;
+ LastModified : String(24);
+ MainCategoryId : String(40);
+ MainCategoryName : String(40);
+ MeasureUnit : String(10);
+ Name : String(255);
+ Price : Decimal(15,2);
+ QuantityUnit : String(3);
+ RatingCount : Integer;
+ SubCategoryId : String(40);
+ SubCategoryName : String(40);
+ StockQuantity : Integer;
+ SupplierId : String(10);
+ SupplierName : String(80);
+ WeightMeasure : Decimal(13,3);
+ WeightUnit : String(10);
+};
+entity MainCategories {
+ key Id : String(40);
+ Name : String(40);
+ SubCategories : association [*] to SEPMRA_SHOP.SubCategories on SubCategories.MainCategoryId = Id;
+};
+entity SubCategories {
+ key Id : String(40);
+ Name : String(40);
+ MainCategoryId : String(40);
+ MainCategoryName : String(40);
+ MainCategory : association [*] to MainCategories on MainCategory.Id = MainCategoryId;
+};
+
+};

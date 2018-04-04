@@ -1,0 +1,118 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs02/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="vCard" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+      <Schema Namespace="SEPMRA_SHOP" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+	    <Annotations Target="SEPMRA_SHOP.Product/SupplierName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	        <Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+	          <Record>
+	            <PropertyValue Property="CollectionPath" String="Suppliers"/>
+	            <PropertyValue Property="SearchSupported" Bool="true"/>
+	            <PropertyValue Property="Parameters">
+	              <Collection>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="SupplierName"/>
+	                  <PropertyValue Property="ValueListProperty" String="Name"/>
+	                </Record>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="SupplierId"/>
+	                  <PropertyValue Property="ValueListProperty" String="Id"/>
+	                </Record>
+	              </Collection>
+	            </PropertyValue>
+	          </Record>
+	        </Annotation>
+	      </Annotations>
+	      <Annotations Target="SEPMRA_SHOP.Product/SubCategoryName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	        <Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+	          <Record>
+	            <PropertyValue Property="CollectionPath" String="SubCategories"/>
+	            <PropertyValue Property="SearchSupported" Bool="true"/>
+	            <PropertyValue Property="Parameters">
+	              <Collection>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="SubCategoryName"/>
+	                  <PropertyValue Property="ValueListProperty" String="Name"/>
+	                </Record>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterIn">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="MainCategoryId"/>
+	                  <PropertyValue Property="ValueListProperty" String="MainCategoryId"/>
+	                </Record>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="SubCategoryId"/>
+	                  <PropertyValue Property="ValueListProperty" String="Id"/>
+	                </Record>
+	              </Collection>
+	            </PropertyValue>
+	          </Record>
+	        </Annotation>
+	      </Annotations>
+	      <Annotations Target="SEPMRA_SHOP.Product/MainCategoryName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	        <Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+	          <Record>
+	            <PropertyValue Property="CollectionPath" String="MainCategories"/>
+	            <PropertyValue Property="SearchSupported" Bool="true"/>
+	            <PropertyValue Property="Parameters">
+	              <Collection>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="MainCategoryName"/>
+	                  <PropertyValue Property="ValueListProperty" String="Name"/>
+	                </Record>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="MainCategoryId"/>
+	                  <PropertyValue Property="ValueListProperty" String="Id"/>
+	                </Record>
+	              </Collection>
+	            </PropertyValue>
+	          </Record>
+	        </Annotation>
+	      </Annotations>
+	      <Annotations Target="SEPMRA_SHOP.Product/MainCategoryId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	        <Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+	          <Record>
+	            <PropertyValue Property="CollectionPath" String="MainCategories"/>
+	            <PropertyValue Property="SearchSupported" Bool="true"/>
+	            <PropertyValue Property="Parameters">
+	              <Collection>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="MainCategoryId"/>
+	                  <PropertyValue Property="ValueListProperty" String="Id"/>
+	                </Record>
+	                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+	                  <PropertyValue Property="LocalDataProperty" PropertyPath="MainCategoryName"/>
+	                  <PropertyValue Property="ValueListProperty" String="Name"/>
+	                </Record>
+	              </Collection>
+	            </PropertyValue>
+	          </Record>
+	        </Annotation>
+	      </Annotations>
+	      <Annotations Target="SEPMRA_SHOP.Product" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	        <Annotation Term="com.sap.vocabularies.Common.v1.SemanticKey">
+	          <Collection>
+	            <PropertyPath>Id</PropertyPath>
+	          </Collection>
+	        </Annotation>
+	      </Annotations>      
+	    </Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

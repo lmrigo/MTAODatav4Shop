@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sap.mtao4shop</groupId>
+	<artifactId>service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>This archetype enables OData V4 service development and contains aggregated dependencies for consuming OData V2 and CDS data sources.</name>
+	<build>
+		<finalName>service</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<annotationProcessors>
+						<annotationProcessor>
+							com.sap.cloud.sdk.service.annotationprocessor.AnnotationProcessor
+						</annotationProcessor>
+					</annotationProcessors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+					<additionalConfig>
+						<!-- Enable annotation processing in Eclipse -->
+						<file>
+							<name>.factorypath</name>
+							<content>
+								<![CDATA[<factorypath><factorypathentry
+kind="VARJAR" id="M2_REPO/com/sap/cloud/sdk/service/prov/annotation-processor/${cxs.rt.version}/annotation-processor-${cxs.rt.version}.jar"
+enabled="true" runInBatchMode="false"/></factorypath>
+ ]]>
+							</content>
+						</file>
+						<file>
+							<name>.settings/org.eclipse.jdt.core.prefs</name>
+							<content>
+								<![CDATA[
+eclipse.preferences.version=1
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
+org.eclipse.jdt.core.compiler.compliance=1.8
+org.eclipse.jdt.core.compiler.processAnnotations=enabled
+org.eclipse.jdt.core.compiler.source=1.8
+ ]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<properties>
+		<javax.version>3.1.0</javax.version>
+		<cxs.version>1.1.3</cxs.version>
+		<xsa.version>1.7.4</xsa.version>
+		<sfin.version>0.0.9</sfin.version>
+	</properties>
+	<dependencies>
+		<!-- OData provisioning dependencies -->
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>core-prov</artifactId>
+			<version>${cxs.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odatav4-prov</artifactId>
+			<version>${cxs.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>annotation-processor</artifactId>
+			<version>${xsa.version}</version>
+		</dependency>
+		<!-- CDS Consumption dependencies -->
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk</groupId>
+			<artifactId>hana-connectivity-cds</artifactId>
+			<version>${cxs.version}</version>
+		</dependency>
+		<!-- V2 Consumption dependencies -->
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk</groupId>
+			<artifactId>odata-v2-connectivity-dependencies</artifactId>
+			<version>${cxs.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.cloudplatform</groupId>
+			<artifactId>scp-cf</artifactId>
+			<version>${sfin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.7</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles >
+		<profile>
+			<activation>
+				<property>
+					<name>devmode</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>3.0.0</version>
+						<configuration>
+							<webResources combine.children="append">
+								<resource>
+									<directory>${project.build.sourceDirectory}</directory>
+									<targetPath>sources</targetPath>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
